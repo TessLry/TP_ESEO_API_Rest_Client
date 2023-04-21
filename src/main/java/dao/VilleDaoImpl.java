@@ -89,7 +89,6 @@ public class VilleDaoImpl implements VilleDao {
 		} catch (IOException | InterruptedException e) {
 			e.printStackTrace();
 		} 
-		
 	}
 
 }

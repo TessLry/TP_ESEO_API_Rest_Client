@@ -18,6 +18,11 @@ public class Villes extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("listeVille", this.villeDaoImpl.getListeVilles());
 		
+		//Pagination
+		int nbResultatsParPage = 50;
+		int nbPageTotal = this.villeDaoImpl.getListeVilles().size() / nbResultatsParPage;
+		String numPage = request.getParameter("numPage");
+		
 		String page;
         if (request.getParameterMap().containsKey("page")) {
         	page = request.getParameter("page");
@@ -25,10 +30,13 @@ public class Villes extends HttpServlet {
         	page = "";
         }
 		switch(page) {
-		case "distance":
-			this.getServletContext().getRequestDispatcher("/WEB-INF/distance.jsp").include(request, response);
-			break;
+			case "distance":
+				this.getServletContext().getRequestDispatcher("/WEB-INF/distance.jsp").include(request, response);
+				break;
 			case "villes":
+				request.setAttribute("nbResultatsParPage", nbResultatsParPage);
+				request.setAttribute("numPage", numPage);
+				request.setAttribute("nbPageTotal", nbPageTotal);
 				this.getServletContext().getRequestDispatcher("/WEB-INF/villes.jsp").forward(request, response);
 				break;
 			case "infoVille":
