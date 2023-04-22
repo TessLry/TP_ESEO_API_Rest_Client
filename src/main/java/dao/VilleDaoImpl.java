@@ -36,8 +36,8 @@ public class VilleDaoImpl implements VilleDao {
 		for(int i=0; i<ja.length(); i++) {
 			JSONObject jo = ja.getJSONObject(i);
 			Ville ville = new Ville();
-			ville.setCode_commune_INSEE(jo.getString("code_commune_INSEE"));
-			ville.setNom_commune(jo.getString("nom_commune"));
+			ville.setCode_commune_INSEE(jo.getString("codeCommune"));
+			ville.setNom_commune(jo.getString("nomCommune"));
 			listeVilles.add(ville);
 			
 		}
@@ -61,11 +61,11 @@ public class VilleDaoImpl implements VilleDao {
 		JSONObject jo = new JSONObject(responseVille.body());
 		
 		Ville ville = new Ville();
-		ville.setCode_commune_INSEE(jo.getString("code_commune_INSEE"));
-		ville.setNom_commune(jo.getString("nom_commune"));
-		ville.setCode_postal(jo.getString("code_postal"));
-		ville.setLibelle_acheminement(jo.getString("libelle_acheminement"));
-		ville.setLigne_5(jo.getString("ligne_5"));
+		ville.setCode_commune_INSEE(jo.getString("codeCommune"));
+		ville.setNom_commune(jo.getString("nomCommune"));
+		ville.setCode_postal(jo.getString("codePostal"));
+		ville.setLibelle_acheminement(jo.getString("libelleAcheminement"));
+		ville.setLigne_5(jo.getString("ligne5"));
 		ville.setLatitude(jo.getString("latitude"));
 		ville.setLongitude(jo.getString("longitude"));
 		
